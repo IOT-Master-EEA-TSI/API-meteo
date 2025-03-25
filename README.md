@@ -2,7 +2,7 @@
 
 ## Table des matières 
 
-- (#Installation)
+- [Installation] (#Installation)
 - [Utilisation]
 - [Fonctionnalités]
 
