@@ -10,7 +10,7 @@
 
 Avant la première utilisation de ce script, il est nécessaire d’installer plusieurs bibliothèques Python :
 
-_ requests
+- requests
 - argparse
 
 Ouvrez votre invite de commande, puis vérifiez dans un premier temps que Python est bien installé sur votre machine en exécutant la commande suivante :
