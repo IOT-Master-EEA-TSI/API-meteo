@@ -22,6 +22,16 @@ Une fois que vous avez confirmé que Python est installé, entrez les commandes 
 - `pip install requests`
 - `pip install argparse`
 
+# **Fonctionnalités**
+
+| Commande                                      | Comportement                          |
+|----------------------------------------------|---------------------------------------|
+| `python script.py`                           | Par défaut : météo actuelle à Dijon   |
+| `python script.py --ville Paris`             | Météo actuelle à Paris                |
+| `python script.py --prevision`               | Prévision 5 jours pour Dijon          |
+| `python script.py --ville Nice --prevision`  | Prévision 5 jours pour Nice           |
+| `python script.py --transfere`               | Envoie discret de la météo actuelle   |
+| `python script.py --prevision --transfere`   | Envoie discret des prévisions         |
 
 
 
