@@ -52,5 +52,6 @@ Ce mode est conçu pour les cas d'utilisation automatisés. Le script n'affiche 
 `stdout_output = result.stdout`
 `stderr_output = result.stderr`
 
+Ce code utilise le module subprocess pour exécuter un autre script Python (meteo.py) en lui passant des arguments (--ville Paris). Grâce à l’option capture_output=True, la sortie standard (stdout) et la sortie d’erreur (stderr) du script exécuté sont capturées, tandis que text=True permet de récupérer ces sorties sous forme de chaînes de caractères plutôt que d’octets. Ensuite, result.stdout contient les données météo générées par le script (au format JSON), et result.stderr contiendra d’éventuels messages d’erreur.
 
 
