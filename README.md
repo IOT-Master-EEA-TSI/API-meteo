@@ -37,17 +37,17 @@ Une fois que vous avez confirmé que Python est installé, entrez les commandes 
 
 Ce script propose deux modes de fonctionnement pour la transmission des informations météo, en fonction du besoin :
 
-** 1. Mode Affichage ** (Par défaut)
+**1. Mode Affichage** (Par défaut)
 
 Dans ce mode, les données météo sont affichées directement à l'écran, dans l'invite de commande, sous forme lisible et formatée. Ce mode est idéal pour une consultation humaine rapide.
 
-** 2. Mode Silencieux **
+**2. Mode Silencieux**
 
 Ce mode est conçu pour les cas d'utilisation automatisés. Le script n'affiche rien à l'écran, mais sérialise les données (au format JSON) et les envoie directement sur la sortie standard (stdout). Cela permet à un autre programme ou script d'intercepter et de traiter ces données de manière transparente, que ce soit via un pipeline (|, >, etc.) ou directement en Python avec le module subprocess, comme dans l'exemple ci-dessous :
 
 `import subprocess`
 
-`result = subprocess.run(['python', 'meteo.py', '--ville', 'Paris', '--prevision'], capture_output=True, text=True)`
+`result = subprocess.run(['python', 'script_meteo.py', '--ville', 'Paris', '--prevision'], capture_output=True, text=True)`
 
 `stdout_output = result.stdout`
 
