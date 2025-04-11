@@ -45,4 +45,12 @@ Dans ce mode, les données météo sont affichées directement à l'écran, dans
 
 Ce mode est conçu pour les cas d'utilisation automatisés. Le script n'affiche rien à l'écran, mais sérialise les données (au format JSON) et les envoie directement sur la sortie standard (stdout). Cela permet à un autre programme ou script d'intercepter et de traiter ces données de manière transparente, que ce soit via un pipeline (|, >, etc.) ou directement en Python avec le module subprocess, comme dans l'exemple ci-dessous :
 
+`import subprocess`
+
+`result = subprocess.run(['python', 'meteo.py', '--ville', 'Paris', '--json'], capture_output=True, text=True)`
+
+`stdout_output = result.stdout`
+`stderr_output = result.stderr`
+
+
 
