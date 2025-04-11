@@ -43,4 +43,6 @@ Dans ce mode, les données météo sont affichées directement à l'écran, dans
 
 ** 2. Mode Silencieux **
 
-Ce mode est conçu pour les cas d'utilisation automatisés. Le script n'affiche rien à l'écran, mais sérialise les données (au format JSON) et les envoie directement sur la sortie standard (stdout). Cela permet à un autre programme ou script d'intercepter et de traiter les données en toute transparence, via un pipeline ou une redirection (|, >, etc.).
+Ce mode est conçu pour les cas d'utilisation automatisés. Le script n'affiche rien à l'écran, mais sérialise les données (au format JSON) et les envoie directement sur la sortie standard (stdout). Cela permet à un autre programme ou script d'intercepter et de traiter ces données de manière transparente, que ce soit via un pipeline (|, >, etc.) ou directement en Python avec le module subprocess, comme dans l'exemple ci-dessous :
+
+
