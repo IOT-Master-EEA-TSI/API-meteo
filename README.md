@@ -95,9 +95,8 @@ Dans cette partie, nous allons voir comment utiliser Node-RED pour :
   1. Ajouter un node function.
     
   2. Insérer le code suivant :
-       `msg.payload = "python3 /chemin/vers/API.py --ville " + msg.payload;`
-       `return msg;`
-     
+       `msg.payload = "python3 /chemin/vers/API.py --ville " + msg.payload;
+        return msg;`   
   Remplacer /chemin/vers/API.py par le chemin réel de votre script Python.
 
 
