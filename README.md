@@ -98,7 +98,8 @@ Dans cette partie, nous allons voir comment utiliser Node-RED pour :
        `msg.payload = "python3 /chemin/vers/API.py --ville " + msg.payload;`
      
        `return msg;`
-    Remplacer /chemin/vers/API.py par le chemin réel de votre script Python.
+     
+  Remplacer /chemin/vers/API.py par le chemin réel de votre script Python.
 
 
   ## Ajouter un node exec
