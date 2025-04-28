@@ -92,12 +92,12 @@ Dans cette partie, nous allons voir comment utiliser Node-RED pour :
 
   Procédure :
 
-    1. Ajouter un node function.
+  1. Ajouter un node function.
     
-    2. Insérer le code suivant :
+  2. Insérer le code suivant :
        `msg.payload = "python3 /chemin/vers/API.py --ville " + msg.payload;`
        `return msg;`
-       Remplacer /chemin/vers/API.py par le chemin réel de votre script Python.
+    Remplacer /chemin/vers/API.py par le chemin réel de votre script Python.
 
 
   ## Ajouter un node exec
@@ -106,14 +106,14 @@ Dans cette partie, nous allons voir comment utiliser Node-RED pour :
 
   Procédure :
 
-    1. Ajouter un node exec
+  1. Ajouter un node exec
   
-    2. Configurer :
+  2. Configurer :
        - Command : laisser vide (car nous utilisons msg.payload)
        - Append : activé
        - Return : sélectionner stdout
   
-    3. (Optionnel) Renommer le node, par exemple en "Exécuter API.py"
+  3. (Optionnel) Renommer le node, par exemple en "Exécuter API.py"
 
   ## Ajouter un node json
   
@@ -121,9 +121,9 @@ Dans cette partie, nous allons voir comment utiliser Node-RED pour :
 
   Procédure :
 
-    1. Ajouter un node json.
+  1. Ajouter un node json.
 
-    2. Laisser les paramètres par défaut.
+  2. Laisser les paramètres par défaut.
 
 **Connecter les nodes dans cet ordre :**
   [inject] → [function] → [exec] → [json] → [debug]
