@@ -1,7 +1,7 @@
 import requests
 import argparse
-import sys
-import os
+import json
+from tabulate import tabulate
 
 parser = argparse.ArgumentParser(description="Script météo avec OpenWeatherMap") # Crée un parser pour les arguments de ligne de commande
 parser.add_argument("--ville", type=str, default="Dijon", help="Nom de la ville") # Ajoute un argument pour spécifier la ville (par défaut : Dijon)
@@ -49,28 +49,9 @@ try :
             previsionMeteo[heure] = {"Meteo": meteo, "Temperature": temperature, "Humidite" : Humidite}
 
         if args.transfere :
-            try :
-                stdout_original = sys.stdout # Sauvegarde de la sortie standard actuelle
-                sys.stdout = open(os.devnull, 'w') # Redirige temporairement stdout vers un "trou noir"
-                sys.stdout.write(repr(previsionMeteo) + "\n") # Écrit directement dans la vraie sortie standard
-                sys.stdout.flush() 
-
-            except (OSError, IOError) as e:
-                print("Erreur lors de la redirection du stdout :", e, file=sys.__stderr__)
-                sys.exit(2)
-
-            except (OSError, BrokenPipeError) as e:
-                print("Erreur lors de l'envoi des données :", e, file=sys.__stderr__)
-                sys.exit(3)
-
-            except TypeError as e:
-                print("Erreur de conversion du dictionnaire :", e, file=sys.__stderr__)
-                sys.exit(4)
-
-            finally :
-                sys.stdout = stdout_original 
+            print(json.dumps(previsionMeteo, indent = 2, ensure_ascii=False)) # # Affiche les données en JSON lisible avec indentation et accents visibles
         else :
-            print(previsionMeteo)
+            print(tabulate(list(previsionMeteo.values()), headers="keys", tablefmt="fancy_grid")) # Affiche les données de prévisions météo sous forme de tableau lisible avec bordures
 
     else :
         # Extraction des données météo utiles
@@ -82,31 +63,9 @@ try :
         }
 
         if args.transfere :
-            print("DEBUG : Transfert actif")
-            try :
-                stdout_original = sys.stdout
-                sys.stdout = open(os.devnull, 'w')
-                sys.__stdout__.write(repr(Meteo))
-                sys.__stdout__.flush()
-
-            except (OSError, IOError) as e:
-                print("Erreur lors de la redirection du stdout :", e, file=sys.__stderr__)
-                sys.exit(2)
-
-            except (OSError, BrokenPipeError) as e:
-                print("Erreur lors de l'envoi des données :", e, file=sys.__stderr__)
-                sys.exit(3)
-
-            except TypeError as e:
-                print("Erreur de conversion du dictionnaire :", e, file=sys.__stderr__)
-                sys.exit(4)
-
-            finally :
-                sys.stdout = stdout_original 
+           print(json.dumps(Meteo, indent = 2, ensure_ascii=False)) # # Affiche les données en JSON lisible avec indentation et accents visibles
         else :
-            # Affichage des résultats
-            print("DEBUG : Affichage de Meteo")
-            print(Meteo)
+            print(tabulate([Meteo], headers="keys", tablefmt="fancy_grid")) # Affiche les données météo actuelles sous forme de tableau lisible avec bordures
 
 # Gestion des différentes erreurs possibles :
 except requests.exceptions.RequestException as erreur: # Problème de connexion ou réponse HTTP invalide
@@ -115,4 +74,3 @@ except requests.exceptions.RequestException as erreur: # Problème de connexion 
 except ValueError as erreur: # Erreur retournée par l'API dans le contenu JSON
     print("Erreur de contenu JSON ou API :", erreur)
     exit(1)
-
